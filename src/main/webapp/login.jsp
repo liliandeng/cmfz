@@ -7,31 +7,31 @@
     <meta http-equiv="description" content="this is my page">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="css/common.css" type="text/css"></link>
-    <link rel="stylesheet" href="css/login.css" type="text/css"></link>
-    <script type="text/javascript" src="script/jquery.js"></script>
-    <script type="text/javascript" src="script/common.js"></script>
+    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css" type="text/css"></link>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css" type="text/css"></link>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/script/jquery.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/script/common.js"></script>
     <script type="text/javascript">
 
         $(function () {
             //点击更换验证码：
             $("#captchaImage").click(function () {//点击更换验证码
-                alert("自己做");
+                $("#captchaImage").prop("src", "getKaptcha.do?t=" + new Date().getTime());
             });
 
             //  form 表单提交
-            $("#loginForm").bind("submit", function () {
+            /*$("#loginForm").bind("submit", function () {
                 alert("自己做");
                 return false;
-            });
+            });*/
         });
     </script>
 </head>
 <body>
 
 <div class="login">
-    <form id="loginForm" action="../back/index.html" method="post">
+    <form id="loginForm" action="selectAdminOne" method="post">
 
         <table>
             <tbody>
@@ -43,7 +43,7 @@
                     用户名:
                 </th>
                 <td>
-                    <input type="text" name="user.name" class="text" value="xxx" maxlength="20"/>
+                    <input type="text" name="name" class="text" maxlength="20"/>
                 </td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
                     密&nbsp;&nbsp;&nbsp;码:
                 </th>
                 <td>
-                    <input type="password" name="user.password" class="text" value="xxx" maxlength="20"
+                    <input type="password" name="pass" class="text" maxlength="20"
                            autocomplete="off"/>
                 </td>
             </tr>
@@ -60,8 +60,8 @@
                 <td>&nbsp;</td>
                 <th>验证码:</th>
                 <td>
-                    <input type="text" id="enCode" name="enCode" class="text captcha" maxlength="4" autocomplete="off"/>
-                    <img id="captchaImage" class="captchaImage" src="img/captcha.jpg" title="点击更换验证码"/>
+                    <input type="text" id="enCode" name="yzm" class="text captcha" maxlength="4" autocomplete="off"/>
+                    <img id="captchaImage" class="captchaImage" src="getKaptcha.do" title="点击更换验证码"/>
                 </td>
             </tr>
             <tr>

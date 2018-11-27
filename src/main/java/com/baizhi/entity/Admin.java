@@ -8,4 +8,13 @@ public class Admin {
     private String name;
     private String pass;
 
+    public Admin() {
+    }
+
+    public Admin(int id, String name, String pass) {
+        this.id = id;
+        this.name = name;
+        this.pass = pass;
+    }
+
 }
