@@ -2,6 +2,8 @@ package com.baizhi.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Menu {
     private int id;
@@ -9,6 +11,8 @@ public class Menu {
     private String icon;
     private int pid;
     private String url;
+
+    private List<Menu> me;
 
     public Menu() {
     }

@@ -1,4 +1,5 @@
 ﻿<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +11,37 @@
     <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript">
-        <!--菜单处理-->
+        $(function () {
+            //手风琴，一种菜单样式，这个菜单按钮被打开，另一个则被关闭
+            $("#aa").accordion({});
+
+            //菜单
+            $.ajax({
+                url: "${pageContext.request.contextPath}/selectMenuAll.do",
+                type: "post",
+                success: function (data) {
+
+                    var data = data.list;
+                    for (var i = 0; i < data.length; i++) {
+                        var t = "";
+                        for (var j = 0; j < data[i].me.length; j++) {
+                            t += data[i].me[j].title;
+                            t += "</br>";
+                        }
+                        //添加一个新面板。在默认情况下，新增的面板会变成当前面板。
+                        // 如果要添加一个非选中面板，不要忘记将'selected'属性设置为false
+
+                        $("#aa").accordion("add", {
+                            title: data[i].title,
+                            content: t,
+                            selected: false
+                        });
+                    }
+                }
+
+            });
+
+        });
     </script>
 
 </head>
@@ -30,6 +61,7 @@
 </div>
 
 <div data-options="region:'west',title:'导航菜单',split:true" style="width:220px;">
+
     <div id="aa" class="easyui-accordion" data-options="fit:true">
 
     </div>
