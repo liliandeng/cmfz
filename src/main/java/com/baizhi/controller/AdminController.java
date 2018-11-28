@@ -20,7 +20,6 @@ public class AdminController {
         if (yzm.equals(ss) && ad != null) {
             ad = aservice.selectOne(ad);
             session.setAttribute("admin", ad);
-            System.out.println(ad);
             return "redirect:/main/main.jsp";
         } else {
             return "redirect:/login.jsp";
@@ -31,6 +30,7 @@ public class AdminController {
     @RequestMapping("/remove")
     public String remove(HttpSession session) {
         session.removeAttribute("admin");
+        System.out.println(session.getAttribute("admin"));
         return "redirect:/login.jsp";
     }
 

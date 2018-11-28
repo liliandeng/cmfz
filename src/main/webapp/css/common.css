@@ -28,7 +28,6 @@ body {
     _background-image: url(about: blank);
     _background-attachment: fixed;
 }
-
 a {
     color: #666666;
     text-decoration: none;
@@ -1241,6 +1240,7 @@ div.ac_results .ac_over {
     background-color: #e4f2fa;
 }
 
+
 .moretable th {
     width: 80px;
     line-height: 25px;
@@ -1250,7 +1250,6 @@ div.ac_results .ac_over {
     color: #333333;
     background-color: #f8fbff;
 }
-
 .moretable td {
     line-height: 25px;
     padding: 5px;

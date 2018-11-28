@@ -17,7 +17,6 @@ public class MenuController {
     public @ResponseBody
     Map select() {
         Map map = mService.selectAll();
-        System.out.println(map);
         return map;
     }
 
