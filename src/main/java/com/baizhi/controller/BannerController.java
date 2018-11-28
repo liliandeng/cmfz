@@ -18,33 +18,32 @@ public class BannerController {
     @RequestMapping("/selectBannerAll")
     public @ResponseBody
     Map select(int page, int rows) {
-        System.out.println(page + "+++++++++++++++++" + rows);
-        System.out.println("ssssssssssssssssssssssssssssssssssss");
         Map map = bservice.selectBannerAll(page, rows);
         return map;
     }
 
     @RequestMapping("/insertBanner")
-    public String insert(Banner ba) {
+    public @ResponseBody
+    boolean insert(Banner ba) {
         System.out.println(ba + "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-        bservice.insert(ba);
-        System.out.println(ba + "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-        return "/main/main";
+        try {
+            bservice.insert(ba);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 
     @RequestMapping("/deleteBanner")
     public String delete(Banner ba) {
-        System.out.println(ba + "dddddddddddddddddddddddddddddddddddd");
         bservice.delete(ba.getId());
-        System.out.println(ba + "dddddddddddddddddddddddddddddddddddd");
         return "/main/main";
     }
 
     @RequestMapping("/updateBanner")
     public String update(Banner ba) {
-        System.out.println(ba + "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
         bservice.update(ba.getStatus(), ba.getId());
-        System.out.println(ba + "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
         return "/main/main";
     }
 }

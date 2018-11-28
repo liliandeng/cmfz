@@ -25,7 +25,7 @@
                     for (var i = 0; i < data.length; i++) {
                         var t = "";
                         for (var j = 0; j < data[i].me.length; j++) {
-                            t += "<p style=\"text-align: center\"> <a id=\"btn\" href=\"#\" class=\"easyui-linkbutton\" onclick=\"addTabs('" + data[i].me[j].title + "','" + data[i].me[j].url + "','" + data[i].me[j].iconCls + "')\"   data-options=\"iconCls:'icon-search'\">" + data[i].me[j].title + "</a> </p>";
+                            t += "<p style=\"text-align: center\"> <a id=\"btn\" href=\"#\" class=\"easyui-linkbutton\" onclick=\"addTabs('" + data[i].me[j].title + "','" + data[i].me[j].url + "','" + data[i].me[j].icon + "')\"   data-options=\"iconCls:'icon-search'\">" + data[i].me[j].title + "</a> </p>";
                         }
                         //添加一个新面板。在默认情况下，新增的面板会变成当前面板。
                         // 如果要添加一个非选中面板，不要忘记将'selected'属性设置为false
@@ -34,7 +34,7 @@
                             title: data[i].title,
                             content: t,
                             selected: false,
-                            iconCls: data[i].iconCls
+                            iconCls: data[i].icon
                         });
                     }
                 }

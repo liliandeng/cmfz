@@ -28,4 +28,25 @@ public class Banner {
         this.status = status;
         this.dates = dates;
     }
+
+    public Banner(String title, String desc, String status) {
+        this.title = title;
+        this.desc = desc;
+        this.status = status;
+    }
+
+    public Banner(String title, String desc, String status, Date dates) {
+        this.title = title;
+        this.desc = desc;
+        this.status = status;
+        this.dates = dates;
+    }
+
+    public Banner(String title, String img, String desc, String status, Date dates) {
+        this.title = title;
+        this.img = img;
+        this.desc = desc;
+        this.status = status;
+        this.dates = dates;
+    }
 }
