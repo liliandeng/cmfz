@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.AlbumDao">
+    <resultMap id="aMap" type="Album">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="coverlmg" property="coverlmg"/>
+        <result column="count" property="count"/>
+        <result column="score" property="score"/>
+        <result column="author" property="author"/>
+        <result column="broadCast" property="broadcast"/>
+        <result column="brief" property="brief"/>
+        <result column="publishDate" property="publishdate"/>
+        <collection property="children" ofType="Chapter">
+            <id column="id" property="id"/>
+            <result column="title" property="title"/>
+            <result column="aid" property="aid"/>
+            <result column="size" property="size"/>
+            <result column="duration" property="duration"/>
+            <result column="downPath" property="downpath"/>
+            <result column="uploadDate" property="uploaddate"/>
+        </collection>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, title, coverlmg, count, score, author, broadCast, brief, publishDate
+  </sql>
+    <select id="selectAlbumAll" resultMap="aMap">
+  select a.*,c.* from album a LEFT JOIN chapter c
+  on a.id=c.aid
+  LIMIT #{start},#{end}
+</select>
+
+    <select id="getCount" resultType="int">
+    select count(*) FROM album
+  </select>
+
+
+</mapper>

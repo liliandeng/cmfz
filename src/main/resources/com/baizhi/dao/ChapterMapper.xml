@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.ChapterDao">
+    <resultMap id="BaseResultMap" type="com.baizhi.entity.Chapter">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="aid" property="aid" jdbcType="INTEGER"/>
+        <result column="size" property="size" jdbcType="DOUBLE"/>
+        <result column="duration" property="duration" jdbcType="VARCHAR"/>
+        <result column="downPath" property="downpath" jdbcType="VARCHAR"/>
+        <result column="uploadDate" property="uploaddate" jdbcType="DATE"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, title, aid, size, duration, downPath, uploadDate
+  </sql>
+
+</mapper>
