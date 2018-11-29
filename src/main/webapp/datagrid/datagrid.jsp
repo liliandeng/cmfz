@@ -146,12 +146,12 @@
 <table id="ta"></table>
 <%--弹出对话框--%>
 <div id="dd">
-    <form id="ff" method="post">
+    <form id="ff" method="post" enctype="multipart/form-data">
         标题： <input type="text" name="title"/> </br>
         描述：<input type="text" name="desc"/> </br>
+        图片：<input type="file" name="wenjian"></br>
         状态：<input type="text" name="status"/> </br>
-        状态：<input type="text" name="dates"/><font>日期格式yyyy-MM-dd</font> </br>
-        <%-- <input type="submit" value="添加">--%>
+        日期：<input type="text" name="dates"/><font>日期格式yyyy-MM-dd</font> </br>
         <a href="JavaScript:void(0)" class="easyui-linkbutton" onclick="doAdd()">添加</a>
     </form>
 </div>

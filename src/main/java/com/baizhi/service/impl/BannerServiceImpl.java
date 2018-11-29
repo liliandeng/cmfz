@@ -40,6 +40,7 @@ public class BannerServiceImpl implements BannerService {
 
     @Override
     public void insert(Banner ba) {
+
         bannerDao.insert(ba);
     }
 }
