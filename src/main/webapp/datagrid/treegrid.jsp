@@ -5,7 +5,12 @@
         iconCls: 'icon-edit',
         text: "添加专辑",
         handler: function () {
-
+            $('#ddd').dialog({
+                title: '添加',
+                width: 400,
+                height: 300,
+                closed: false,
+            });
         }
     }, '-', {
         iconCls: 'icon-help',
@@ -83,6 +88,26 @@
 
     });
 
+    //添加操作开始
+    function doAdds() {
+        $("#fff").form("submit", {
+            url: "${pageContext.request.contextPath}/addAlbum",
+            //回调函数
+            success: function (data) {
+                //因为data是json字符串，所以判断时，要么用JSON.parse()方法解析，要么时其等于一个true字符串进行判断
+                if (data == "true") {
+                    //关闭修改对话框
+                    $("#ddd").dialog("close", true);
+                    //刷新展示数据页面
+                    $("#al").edatagrid("reload", true);
+                } else {
+                    alert("添加失败");
+                }
+            },
+        });
+    };
+    //添加操作====结束===
+
 </script>
 
 
@@ -119,6 +144,15 @@
         </div>
     </form>
 </div>--%>
+
+<%--添加专辑--%>
+<div id="ddd">
+    <form id="fff" method="post" enctype="multipart/form-data">
+        标题： <input type="text" name="title"/> </br>
+        图片：<input type="file" name="wenjian"></br>
+        <a href="JavaScript:void(0)" class="easyui-linkbutton" onclick="doAdds()">添加</a>
+    </form>
+</div>
 
 <div id="audio">
     <audio id="audio_id" src="" autoplay="autoplay" controls="controls" loop="loop"></audio>

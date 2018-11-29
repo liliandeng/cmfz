@@ -27,4 +27,13 @@ public class Chapter implements Serializable {
         this.downpath = downpath;
         this.uploaddate = uploaddate;
     }
+
+    public Chapter(String id, String title, int aid, double size, String duration, String downpath) {
+        this.id = id;
+        this.title = title;
+        this.aid = aid;
+        this.size = size;
+        this.duration = duration;
+        this.downpath = downpath;
+    }
 }

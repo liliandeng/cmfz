@@ -34,5 +34,9 @@
     select count(*) FROM album
   </select>
 
+    <insert id="addAlbum">
+        insert into album VALUES(0,#{title},#{coverlmg},2,'5','没有作者','没有播音','没有简介',now());
+
+    </insert>
 
 </mapper>

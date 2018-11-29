@@ -26,4 +26,9 @@ public class AlbumServiceImpl implements AlbumService {
         map.put("rows", list);
         return map;
     }
+
+    @Override
+    public void addAlbum(Album al) {
+        albumDao.addAlbum(al);
+    }
 }
