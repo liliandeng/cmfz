@@ -16,7 +16,7 @@
         iconCls: 'icon-help',
         text: "添加章节",
         handler: function () {
-            var row = $("#chapter_tg").treegrid("getSelected");
+            var row = $("#al").treegrid("getSelected");
             if (row == null) {
                 alert("请先选中专辑")
             } else {
@@ -52,10 +52,11 @@
         text: "下载音频",
         iconCls: 'icon-help',
         handler: function () {
-            var row = $("#chapter_tg").treegrid("getSelected");
+            var row = $("#al").treegrid("getSelected");
+            console.log(row)
             if (row != null) {
                 if (row.size != null) {
-                    location.href = "${pageContext.request.contextPath}/chapter/download?url=" + row.url + "&title=" + row.title
+                    location.href = "${pageContext.request.contextPath}/download?downpath=" + row.downpath + "&title=" + row.title
                 }
             }
         }
@@ -63,6 +64,11 @@
 
     $(function () {
         $("#al").treegrid({
+            onDblClickRow: function (row) {
+                console.log(row.downpath)//获取不到
+                $("#audio").dialog("open")
+                $("#audio_id").prop("src", "${pageContext.request.contextPath}/" + row.downpath)
+            },
             toolbar: toolbar,
             method: "post",
             url: '${pageContext.request.contextPath}/selectAlbumAll',
@@ -84,6 +90,30 @@
             width: 400,
             height: 200,
             closed: true,
+        });
+
+        $('#audio').dialog({
+            title: '播放',
+            width: 400,
+            height: 200,
+            closed: true,
+        });
+        $('#chapter_dd').dialog({
+            title: '添加章节',
+            width: 400,
+            height: 200,
+            closed: true,
+            buttons: [{
+                text: '保存',
+                handler: function () {
+                    addChapter();
+                }
+            }, {
+                text: '关闭',
+                handler: function () {
+                    $("#chapter_dd").dialog("close", true)
+                }
+            }],
         });
 
     });
@@ -108,6 +138,12 @@
     };
     //添加操作====结束===
 
+    function addChapter() {
+        $('#chapter_ff').form('submit', {
+            url: "${pageContext.request.contextPath}/addChapter"
+        })
+    }
+
 </script>
 
 
@@ -130,22 +166,22 @@
 </div>
 
 
-<%--<div id="chapter_dd">
+<div id="chapter_dd">
 
     <form id="chapter_ff" method="post" ENCTYPE="multipart/form-data">
         <div>
-            标题:<input class="easyui-validatebox" type="text" name="title" data-options="required:true"/>
+            标题:<input class="easyui-validatebox" type="text" name="titles" data-options="required:true"/>
         </div>
         <div>
-            请选择:<input type="file" name="chapter" style="width:300px">
+            请选择:<input type="file" name="wenjian" style="width:300px">
         </div>
         <div>
             <input type="hidden" name="id" id="p_id" value="" style="width:300px">
         </div>
     </form>
-</div>--%>
+</div>
 
-<%--添加专辑--%>
+添加专辑
 <div id="ddd">
     <form id="fff" method="post" enctype="multipart/form-data">
         标题： <input type="text" name="title"/> </br>

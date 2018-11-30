@@ -10,7 +10,7 @@ public class Chapter implements Serializable {
     private String id;
     private String title;
     private int aid;
-    private double size;
+    private String size;
     private String duration;
     private String downpath;
     private Date uploaddate;
@@ -18,7 +18,7 @@ public class Chapter implements Serializable {
     public Chapter() {
     }
 
-    public Chapter(String id, String title, Integer aid, Double size, String duration, String downpath, Date uploaddate) {
+    public Chapter(String id, String title, int aid, String size, String duration, String downpath, Date uploaddate) {
         this.id = id;
         this.title = title;
         this.aid = aid;
@@ -28,7 +28,7 @@ public class Chapter implements Serializable {
         this.uploaddate = uploaddate;
     }
 
-    public Chapter(String id, String title, int aid, double size, String duration, String downpath) {
+    public Chapter(String id, String title, int aid, String size, String duration, String downpath) {
         this.id = id;
         this.title = title;
         this.aid = aid;
